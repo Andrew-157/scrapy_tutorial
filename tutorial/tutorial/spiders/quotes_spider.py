@@ -4,18 +4,10 @@ import scrapy
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
 
-    def start_requests(self):
-        """
-        must return an iterable of Requests (you can return a list of requests or write a generator function)
-        which the Spider will begin to crawl from. Subsequent requests will be generated successively from these initial requests.
-        """
-        urls = [
-            'https://quotes.toscrape.com/page/1/',
-            'https://quotes.toscrape.com/page/2/'
-        ]
-
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+    start_urls = [
+        'https://quotes.toscrape.com/page/1/',
+        'https://quotes.toscrape.com/page/2/'
+    ]
 
     def parse(self, response):
         """
